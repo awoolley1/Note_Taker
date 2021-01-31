@@ -1,5 +1,6 @@
 var notesData = require("../db/db.json");
 const fs = require("fs");
+var uuid = require("uuid");
 
 const util = require("util");
 //const writeFileAsync = util.promisify(fs.writeFile);
@@ -17,8 +18,8 @@ module.exports = function (app) {
     res.json(notesData)
   });
 
-  app.delete("/api/notes", function (req, res) {
-      
+  app.delete("/api/notes/:id", function (req, res) {
+      res.send
   })
 
 
