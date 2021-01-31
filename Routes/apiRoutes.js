@@ -12,10 +12,14 @@ module.exports = function (app) {
   });
 
   app.post("/api/notes", function (req, res) {
-    console.log(req.body);
     notesData.push(req.body);
-    console.log(notesData)
     fs.writeFileSync("./db/db.json", JSON.stringify(notesData))
     res.json(notesData)
   });
+
+  app.delete("/api/notes", function (req, res) {
+      
+  })
+
+
 };
