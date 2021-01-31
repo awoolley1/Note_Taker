@@ -16,9 +16,10 @@ module.exports = function (app) {
   });
 
   app.delete("/api/notes/:id", function (req, res) {
-    var notesDataPostDelete = notesData.filter(({id}) => {
+    var notesDataPostDelete = notesData.filter(({ id }) => {
       return id !== req.params.id;
-    }); 
+    });
+    notesData=notesDataPostDelete
     fs.writeFileSync("./db/db.json", JSON.stringify(notesDataPostDelete));
     res.json(notesDataPostDelete);
   });
