@@ -17,6 +17,8 @@ module.exports = function (app) {
   });
 
   app.delete("/api/notes/:id", function (req, res) {
-    res.send;
+    var notesDataPostDelete = notesData.filter((id)=>id!==req.id)
+    fs.writeFileSync("./db/db.json", JSON.stringify(notesDataPostDelete));
+    res.json(notesDataPostDelete);
   });
 };
