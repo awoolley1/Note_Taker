@@ -9,7 +9,7 @@ module.exports = function (app) {
     
     console.log(req.body);
       notesData.push(req.body);
-      res.json(notesData);
+      res.json(true);
     
   });
 };
