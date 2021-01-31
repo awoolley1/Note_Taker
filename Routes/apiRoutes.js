@@ -2,7 +2,6 @@ var notesData = require("../db/db.json");
 const fs = require("fs");
 const uuidv1 = require("uuid").v1;
 
-
 module.exports = function (app) {
   app.get("/api/notes", function (req, res) {
     res.json(notesData);
@@ -17,7 +16,11 @@ module.exports = function (app) {
   });
 
   app.delete("/api/notes/:id", function (req, res) {
-    var notesDataPostDelete = notesData.filter((id)=>id!==req.id)
+    var notesDataPostDelete = notesData.filter(({id}) => {
+      console.log(notesData)
+      console.log(req.params.id);
+      return id !== req.params.id;
+    });
     fs.writeFileSync("./db/db.json", JSON.stringify(notesDataPostDelete));
     res.json(notesDataPostDelete);
   });
